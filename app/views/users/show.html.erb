@@ -1,0 +1,63 @@
+<h1><%= @user.email %>'s Page</h1>
+<%= gravatar_for @user %><br><br>
+Email: <strong><%= @user.email %></strong><br><br>
+Joined On: <strong><%= @user.created_at %></strong><br><br>
+
+<h2>Friend Requests Pending</h2>
+<ul>
+  <% if @user.received_friend_requests.any? %>
+    <% @user.received_friend_requests.each do |request| %>
+      <li>
+        <%= request.sender.email %>
+        (<%= link_to "accept", friendship_path(sender_id: request.sender.id, receiver_id: current_user.id), method: :patch %> or
+        <%= link_to "decline", friendship_path(sender_id: request.sender.id, receiver_id: current_user.id), method: :delete %>)
+      </li>
+    <% end %>
+  <% else %>
+    <p>You dont any friend requets</p>
+  <% end %>
+</ul>
+
+<h2>Friend Requests Sent</h2>
+<ul>
+  <% if @user.sent_friend_requests.any? %>
+    <% @user.sent_friend_requests.each do |request| %>
+      <li><%= request.receiver.email %></li>
+    <% end %>
+  <% else %>
+    <p>You haven't sent any friend requets</p>
+  <% end %>
+</ul>
+
+<h2>Friends</h2>
+<ul>
+  <% if @user.friends.any? %>
+    <% @user.friends.each do |friend| %>
+      <li><%= friend.email %></li>
+    <% end %>
+  <% else %>
+    <p>No friends</p>
+  <% end %>
+</ul>
+
+<h2>Your Posts</h2>
+<table style="border: 1px solid black">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+  </tr>
+  <% if @user.posts.any? %>
+    <% @user.posts.each do |post| %>
+    <tr>
+      <td><strong><%= post.title %></strong></td>
+      <td><%= post.content %></td>
+      <td><%= link_to "Delete", post_path(id: post.id), method: :delete %> </td>
+    <% end %>
+    </tr>
+  <% else %>
+    <p>No Posts</p>
+  <% end %>
+</table><br><br>
+
+<%= link_to "Back", root_url %>
+<%= link_to "My Posts", posts_path %>

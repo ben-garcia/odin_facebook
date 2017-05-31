@@ -1,0 +1,7 @@
+<%= form_for current_user.comments.build do |f| %>
+  <%= f.text_area :content, size: "45x1" %>
+  <%= f.hidden_field :post_id, value: locals[:friend_post_id] %>
+
+  <%= f.submit "Post Comment" %>
+
+<% end %>
