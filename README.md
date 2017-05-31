@@ -1,24 +1,11 @@
-# README
+Project: Ruby on Rails Final Project!!!
+Project: Building Facebook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+(https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 
-Things you may want to cover:
+The purpose of the final project was to combine major concepts by building a miniature version of the popular social media site Facebook.
 
-* Ruby version
+Features include: user authentication(using the devise gem), users can sent friend requests and become friends(if the recipient user accepts of course), users can create posts(text only), users can leave comments on those posts created by their friends, users can sign in using facebook(omniauth-facebook gem)
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+live at: https://frozen-beach-64260.herokuapp.com
