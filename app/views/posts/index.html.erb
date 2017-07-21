@@ -1,88 +1,77 @@
-<h2>Your Posts</h2>
-
-<table style="border: 1px solid black">
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-  </tr>
-  <% if @user.posts.any? %>
-    <% @user.posts.each do |post| %>
-    <tr>
-      <td><strong><%= post.title %></strong></td>
-      <td><%= post.content %></td>
-      <td><%= link_to "Delete", post_path(id: post.id), method: :delete %> </td>
-    <% end %>
-    </tr>
-  <% else %>
-    <p>No Posts</p>
-  <% end %>
-</table><br><br>
+<%= render "partials/posts" %>
 
 <h2>Your Friends Posts</h2>
-<table style="border: 1px solid black">
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Author</th>
-    <th># of Likes</th>
-    <th>Like Post</th>
-  </tr>
-  <% if @user.friends.any? %>
-    <% @user.friends.each do |friend| %>
-      <% if friend.posts.any? %>
-        <% friend.posts.each do |friend_post| %>
-          <tr>
-            <td><%= friend_post.title %></td>
-            <td><%= friend_post.content %></td>
-            <td><%= friend_post.author.email %></td>
-            <td><%= friend_post.likes.count %></td>
-            <% if !friend_post.likes.exists?(user_id: current_user.id) %>
-              <td><%= link_to "Like", likes_path(post_id: friend_post.id), method: :post %></td>
-            <% else %>
-              <td><%= link_to "Unlike", like_path(id: friend_post.id, user_id: current_user.id, post_id: friend_post.id), method: :delete %></td>
-            <% end %>
-          </tr>
-          <tr>
-            <td><%= render 'shared/comments_form', locals: {friend_post_id: friend_post.id} %></td>
-          </tr>
-          <tr>
-            <% if friend_post.comments.any? %>
-              <ul>
-                <td>
-                  <strong>Comments</strong>
-              <% friend_post.comments.each do |comment| %>
-                    <li>
-                      <%= comment.content %>
-                      <% if current_user == comment.user %>
-                        <%= link_to "(delete)", comment_path(id: comment.id), method: :delete %>
-                      <% end %>
-                      user:<strong><%= comment.user.email %></strong>
-                    </li>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th># of Likes</th>
+      <th>Like Post</th>
+    </tr>
+    <% if @user.friends.any? %>
+      <% @user.friends.each do |friend| %>
+        <% if friend.posts.any? %>
+          <% friend.posts.each do |friend_post| %>
+            <tr>
+              <td><%= friend_post.title %></td>
+              <td><%= friend_post.content %></td>
+              <td><%= friend_post.author.email %></td>
+              <td><%= friend_post.likes.count %></td>
+              <% if !friend_post.likes.exists?(user_id: current_user.id) %>
+                <td><%= link_to "Like", likes_path(post_id: friend_post.id), method: :post, class: "btn btn-success" %></td>
+              <% else %>
+                <td><%= link_to "Unlike", like_path(id: friend_post.id, user_id: current_user.id, post_id: friend_post.id), method: :delete, class: "btn btn-danger" %></td>
               <% end %>
-                </td>
-              </ul>
-            <% else %>
-              <td>This post doesn't have any comments</td>
-            <% end %>
-          </tr>
+            </tr>
+            <tr>
+              <td><%= render 'partials/comments_form', locals: { friend_post_id: friend_post.id } %></td>
+            </tr>
+            <tr>
+              <% if friend_post.comments.any? %>
+                <ul>
+                  <td>
+                    <strong>Comments</strong>
+                <% friend_post.comments.each do |comment| %>
+                      <li>
+                        <%= comment.content %>
+                        <% if current_user == comment.user %>
+                          <%= link_to "Delete", comment_path(id: comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <% end %>
+                        user:<strong><%= comment.user.email %></strong>
+                      </li>
+                <% end %>
+                  </td>
+                </ul>
+              <% else %>
+                <td>This post doesn't have any comments</td>
+              <% end %>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
+    <% else %>
+      <p>No Friend Posts</p>
     <% end %>
-  <% else %>
-    <p>No Friend Posts</p>
-  <% end %>
-</table><br><br>
+  </table>
+</div>
 
-<h2>Create New Post</h2>
-<%= form_for @user.posts.build do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br><br>
+<div class="row">
+  <div class="col-sm-6">
+    <h2>Create New Post</h2>
+    <%= form_for @user.posts.build do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %><br><br>
 
-  <%= f.label :content %>
-  <%= f.text_area :content, size: "30x5" %><br><br>
+      <%= f.label :content %>
+      <%= f.text_area :content, size: "30x5", class: "form-control" %><br><br>
 
-  <%= f.submit "Create Post"%><br><br>
-<% end %>
+      <%= f.submit "Create Post", class: "btn btn-primary"%><br><br>
+    <% end %>
+  </div>
+</div>
 
 
-<%= link_to "Back", root_url %>
+
+<%= link_to "Back", root_url, class: "btn btn-info"%>

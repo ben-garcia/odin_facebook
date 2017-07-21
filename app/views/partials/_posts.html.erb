@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2>Your Posts</h2>
+
+    <% if @user.posts.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.posts.each do |post|  %>
+            <tr>
+              <td><%= post.title %></td>
+              <td><%= post.content %></td>
+              <td><%= link_to "Delete", post_path(id: post.id), method: :delete, class: "btn btn-danger" %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% else %>
+      <p>No Posts Yet</p>
+    <% end %>
+  </div>
+</div>

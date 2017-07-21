@@ -9,12 +9,15 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <div class="container">
+      <%= render 'partials/navbar' %>
 
-    <p class="notice" style="color: green"><%= notice %></p>
-    <p class="alert" style="color: red"><%= alert %></p>
+      <% if flash[:notice] || flash[:alert] %>
+        <p class="notice" style="color: green; text-align: center; font-size: 20px"><%= notice %></p>
+        <p class="alert" style="color: red; text-align: center; font-size: 20px"><%= alert %></p>
+      <% end %>
 
-    <%= yield %>
-
+      <%= yield %>
+  </div>
   </body>
 </html>

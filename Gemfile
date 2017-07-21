@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.1'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -59,6 +61,6 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'omniauth-facebook'
 gem 'figaro'
 
-group :production do  
+group :production do
   gem 'rails_12factor'
 end

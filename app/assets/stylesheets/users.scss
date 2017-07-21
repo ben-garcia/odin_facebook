@@ -1,3 +1,22 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.button1 {
+  margin-top: 20px;
+}
+
+.align-with-navbar {
+  position: relative;
+  top: 13px;
+  left: 10px;
+}
+
+.jumbotron {
+  margin-top: 0;
+  text-align: center
+}
+
+.row {
+  border-bottom: 1px solid #ccc;
+}
