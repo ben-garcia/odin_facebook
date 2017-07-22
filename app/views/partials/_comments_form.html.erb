@@ -1,5 +1,5 @@
 <%= form_for current_user.comments.build do |f| %>
-  <%= f.text_area :content, size: "45x1", class: "form-control" %>
+  <%= f.text_area :content, size: "45x1", class: "form-control" %><br>
   <%= f.hidden_field :post_id, value: locals[:friend_post_id] %>
 
   <%= f.submit "Post Comment", class: "btn btn-primary" %>

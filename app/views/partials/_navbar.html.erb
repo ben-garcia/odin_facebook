@@ -7,7 +7,8 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "All Users", users_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li class="align-with-navbar">Notifications: <span class="badge"><%= current_user.received_friend_requests.count %></span></li>        
+        <li><%= link_to "My Posts", posts_path %></li>
+        <li class="align-with-navbar">Notifications: <span class="badge"><%= current_user.received_friend_requests.count %></span></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Settings", edit_user_registration_path, class: "glyphicon glyphicon-cog" %></li>

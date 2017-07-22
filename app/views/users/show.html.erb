@@ -9,7 +9,9 @@
 <div class="row">
   <!-- Users pending friend requets-->
   <div class="col-sm-6">
-    <h2>Friend Requests Pending</h2>
+    <div class="well">
+      <h2>Friend Requests Pending</h2>
+    </div>
 
     <% if @user.received_friend_requests.any? %>
 
@@ -43,7 +45,9 @@
 
   <!-- Users sent friend requets-->
   <div class="col-sm-6">
-    <h2>Friend Requests Sent</h2>
+    <div class="well">
+      <h2>Friend Requests Sent</h2>
+    </div>
 
     <% if @user.sent_friend_requests.any? %>
 
@@ -51,7 +55,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Send Request To</th>
+            <th>Sent Request To</th>
           </tr>
         </thead>
         <tbody>
@@ -72,7 +76,9 @@
 <!-- Friends -->
 <div class="row">
   <div class="col-sm-4">
-    <h2>Friends</h2>
+    <div class="well">
+      <h2>Friends</h2>
+    </div>
     <% if @user.friends.any? %>
     <div class="table-responsive">
       <table class="table">
@@ -104,6 +110,7 @@
 
 <!-- Users posts -->
 <%= render "partials/posts" %>
+
 
 <%= link_to "Back", root_url, class: "btn btn-info" %>
 <%= link_to "Create post", posts_path, class: "btn btn-info" %>
