@@ -28,7 +28,7 @@
                     <td><%= friend_post.author.email %></td>
                     <td><%= friend_post.likes.count %></td>
                     <% if !friend_post.likes.exists?(user_id: current_user.id) %>
-                      <td><%= link_to "Like", likes_path(post_id: friend_post.id), method: :post, class: "btn btn-success" %></td>
+                      <td><%= link_to "Like", likes_path(post_id: friend_post.id), method: :post, class: "btn btn-success", remote: true %></td>
                     <% else %>
                       <td><%= link_to "Unlike", like_path(id: friend_post.id, user_id: current_user.id, post_id: friend_post.id), method: :delete, class: "btn btn-danger" %></td>
                     <% end %>
@@ -37,8 +37,8 @@
                   <tr>
                     <ul>
                       <td>
-                        <strong class="btn btn-info">Comments<span class="glyphicon glyphicon-arrow-down"></span></strong>
-                        <div class="well">
+                        <strong class="btn btn-info comments-button">Comments<span class="glyphicon glyphicon-arrow-down"></span></strong>
+                        <div class="well comments">
                         <% if friend_post.comments.any? %>
                             <% friend_post.comments.each do |comment| %>
                               <li>
@@ -79,10 +79,10 @@
     </div>
     <%= form_for @user.posts.build do |f| %>
       <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %><br><br>
+      <%= f.text_field :title, class: "form-control", name: "post_title" %><br><br>
 
       <%= f.label :content %>
-      <%= f.text_area :content, size: "30x5", class: "form-control" %><br><br>
+      <%= f.text_area :content, size: "30x5", class: "form-control", name: "post_content" %><br><br>
 
       <%= f.submit "Create Post", class: "btn btn-primary"%><br><br>
     <% end %>

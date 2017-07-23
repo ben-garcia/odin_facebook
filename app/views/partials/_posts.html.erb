@@ -19,7 +19,7 @@
             <tr>
               <td><%= post.title %></td>
               <td><%= post.content %></td>
-              <td><%= link_to "Delete", post_path(id: post.id), method: :delete, class: "btn btn-danger" %> </td>
+              <td><%= link_to "Delete", post_path(id: post.id), method: :delete, class: "btn btn-danger delete_post" %> </td>
             </tr>
           <% end %>
         </tbody>
