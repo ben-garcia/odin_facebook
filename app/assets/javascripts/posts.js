@@ -38,8 +38,7 @@ var newPostValidators = {
     }
   },
   errorPlacement: function(error, element) {
-
-    $(error).appendTo($(element).parent());
+    $(error).insertAfter($(element));
     $(error).css({
       color: "red",
       margin: "10px"
