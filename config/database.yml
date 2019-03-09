@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: odin_facebook_development
+  username: "ben"
+  password: "ben"
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
