@@ -16,7 +16,7 @@ gem 'puma'
 # jQuery
 gem 'jquery-rails'
 # Bootstrap
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '>= 3.4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
