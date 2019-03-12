@@ -6,3 +6,20 @@ article h3,
 article p {
   padding: 0 !important;
 }
+
+.post__title {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.post__author {
+  font-size: 1.3em;
+}
+
+.thumbs-up {
+  font-size: 1.5em;
+}
+
+.view-comments {
+  cursor: pointer;
+}

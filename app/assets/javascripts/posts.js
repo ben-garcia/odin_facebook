@@ -7,7 +7,7 @@ var commentValidators = {
   },
   messages: {
     comment_content: {
-      required: 'Enter A Comment'
+      required: "Enter A Comment"
     }
   },
   errorPlacement: function(error, element) {
@@ -31,10 +31,10 @@ var newPostValidators = {
   },
   messages: {
     post_title: {
-      required: '*Dont Forget a Title'
+      required: "*Dont Forget a Title"
     },
     post_content: {
-      required: '*Dont Forget the Content'
+      required: "*Dont Forget the Content"
     }
   },
   errorPlacement: function(error, element) {
@@ -47,23 +47,21 @@ var newPostValidators = {
 };
 
 $(document).ready(function() {
-  $('.comments').hide();
+  $(".comments").hide();
   commentsInteraction();
 
-
-  $('.new_comment').each(function() {
+  $(".new_comment").each(function() {
     $(this).validate(commentValidators);
   });
 
-  $('.new_post').validate(newPostValidators);
-
+  $(".new_post").validate(newPostValidators);
 });
 
 // Display the comments section
 var commentsInteraction = function() {
-  $('.comments-button').each(function() {
+  $(".view-comments").each(function() {
     $(this).click(function() {
       $($(this).next()).show();
-    })
+    });
   });
-}
+};
