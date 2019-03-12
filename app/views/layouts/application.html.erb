@@ -13,12 +13,12 @@
       <%= render 'partials/navbar' %>
 
       <% if flash[:notice]  %>
-        <p class="alert alert-success"><%= notice %></p>
+        <span class="alert alert-success"><%= notice %></span>
       <% elsif flash[:alert]%>      
-        <p class="alert alert-danger"><%= alert %></p>
+        <span class="alert alert-danger"><%= alert %></span>
       <% end %>
 
       <%= yield %>
-  </div>
+    </div>
   </body>
 </html>
