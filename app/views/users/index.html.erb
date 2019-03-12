@@ -1,31 +1,35 @@
-<div class="well">
+<div>
+
   <h1>Users</h1>
 </div>
-<div class="row">
-  <%= will_paginate @users %>
 
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Avatar</th>
-          <th>User</th>
-          <th>Send Request</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= gravatar_for user %></td>
-            <% if current_user != user %>
-              <td><%= user.email %></td>
-              <% if !current_user.sent_friend_requests.exists?(receiver_id: user.id) && !current_user.friends?(user) %>
-                <td><%= link_to "Send Friend Request", friendships_path(sender_id: current_user.id, receiver_id: user.id), method: :post %></td>
-              <% end %>
-            <% end %>
-        </tr>
+<%= will_paginate @users %>
+
+<div> 
+  <% @users.each do |user| %>
+    <article class="row well">
+      <span class="col-xs-12 col-sm-12 col-md-4">
+        <%= gravatar_for user %>
+      </span> 
+      <% if current_user != user %>
+        <span class="col-xs-12 col-sm-12 col-md-4">
+          <%= user.email %> 
+        </span>
+        <% if !current_user.sent_friend_requests.exists?(receiver_id: user.id) && !current_user.friends?(user) %>
+          <div class="col-xs-12 col-sm-12 col-md-4 btn btn-primary">
+            <%= link_to "Send Friend Request",
+                friendships_path(sender_id: current_user.id,
+                                 receiver_id: user.id),
+                method: :post,
+                class: "button__text" %>
+          </div>
         <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+
+    </article>
+  <% end %>
+
+</div>
+<%= will_paginate @users %>
+
 </div>
