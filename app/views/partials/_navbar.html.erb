@@ -8,7 +8,12 @@
         <li><%= link_to "All Users", users_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %></li>
         <li><%= link_to "My Posts", posts_path %></li>
-        <li class="align-with-navbar">Notifications: <span class="badge"><%= current_user.received_friend_requests.count %></span></li>
+        <li class="align-with-navbar">FR Pending:
+          <span class="badge-num badge">
+            <%= link_to "#{current_user.received_friend_requests.count}", user_path(current_user) %>
+          </span>
+        </li>
+        <li class="align-with-nav">Logged In as: <strong><%= current_user.email %></strong></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Settings", edit_user_registration_path, class: "glyphicon glyphicon-cog" %></li>
