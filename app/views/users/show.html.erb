@@ -6,106 +6,53 @@
 </div>
 
 <!-- This row contains the users pending friend requests and their requests sent. -->
-<div class="row">
+<section class="row">
   <!-- Users pending friend requets-->
-  <div class="col-sm-6">
-    <div class="well">
-      <h2>Friend Requests Pending</h2>
-    </div>
+  <div class="col-xs-12 col-sm-12 col-md-6">
+    <h2>Friend Requests Pending</h2>
 
     <% if @user.received_friend_requests.any? %>
-
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Received Request From</th>
-            <th>Accept or Decline</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.received_friend_requests.each do |request|  %>
-            <tr>
-              <td><%= request.sender.email %></td>
-              <td>
-                <%= link_to "Accept", friendship_path(sender_id: request.sender.id, receiver_id: current_user.id), method: :patch, class: "btn btn-success" %>
-                <%= link_to "Decline", friendship_path(sender_id: request.sender.id, receiver_id: current_user.id), method: :delete, class: "btn btn-danger" %>
-              </td>
-            </tr>
-          <% end %>
-
-        </tbody>
-      </table>
-    </div>
+      <% @user.received_friend_requests.each do |request| %>
+        <article>
+          <span><%= request.sender.email %></span>
+          <span>
+            <%= link_to "Accept", friendship_path(sender_id: request.sender.id, receiver_id: current_user.id), method: :patch, class: "btn btn-success" %> 
+            <%= link_to "Decline", friendship_path(sender_id: request.sender.id, receiver_id: current_user.id), method: :delete, class: "btn btn-danger" %> 
+          </span>
+        </article>
+      <% end %>
     <% else %>
-      <p>You haven't received any friend requets</p>
+      <p>You haven't received any friend requests yet</p>
     <% end %>
-
   </div>
 
   <!-- Users sent friend requets-->
-  <div class="col-sm-6">
-    <div class="well">
-      <h2>Friend Requests Sent</h2>
-    </div>
+  <div class="col-xs-12 col-sm-12 col-md-6">
+    <h2>Friend Requests Sent</h2>
 
     <% if @user.sent_friend_requests.any? %>
-
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Sent Request To</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.sent_friend_requests.each do |request|  %>
-            <tr>
-              <td><%= request.receiver.email %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+      <% @user.sent_friend_requests.each do |request| %>
+      <p><%= request.receiver.email %></p>
+    <% end %>
     <% else %>
       <p>You haven't sent any friend requets</p>
     <% end %>
   </div>
-</div>
+</section>
 
 <!-- Friends -->
-<div class="row">
-  <div class="col-sm-4">
-    <div class="well">
-      <h2>Friends</h2>
-    </div>
+<section class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6">
+    <h2>Friends List</h2>
     <% if @user.friends.any? %>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Friends</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.friends.each do |friend|  %>
-            <tr>
-              <td><%= friend.email %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+      <% @user.friends.each do |friend| %>
+        <p><%= friend.email %></p>
+      <% end %>
     <% else %>
       <p>No Friends Yet</p>
     <% end %>
   </div>
-
-  <!-- Empty column -->
-  <div class="col-sm-8">
-
-  </div>
-</div>
+</section>
 
 <!-- Users posts -->
 <%= render "partials/posts" %>
