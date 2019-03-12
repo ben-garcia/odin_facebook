@@ -1,6 +1,23 @@
 <%= render "partials/posts" %>
 
 <div class="row">
+  <div class="cols-xs-12 col-sm-12 col-md-6">
+    <div>
+      <h2>Create New Post</h2>
+    </div>
+    <%= form_for @user.posts.build do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %><br><br>
+
+      <%= f.label :content %>
+      <%= f.text_area :content, size: "30x5", class: "form-control"%><br><br>
+
+      <%= f.submit "Create Post", class: "btn btn-primary"%><br><br>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-12">
     <div>
       <h2>Your Friends Posts</h2>
@@ -47,49 +64,32 @@
               View all <%= friend_post.comments.size %> comments
               <i class="glyphicon glyphicon-chevron-down"></i>
             <% else %>
-             There are no comments yet!<br />
-              
+              This post doesn't any comments yet!<br /> Be the one to post the first.
+              <i class="glyphicon glyphicon-chevron-down"></i>
             <% end %>
           </span>
 
           <div class="comments">
+            <%= render "partials/comments_form", locals: { friend_post_id: friend_post.id } %>
             <% if friend_post.comments.any? %>
               <% friend_post.comments.each do |comment| %>
-                <div>
-                  <%= comment.content %> 
-                <% if current_user == comment.user %>
-                  <%= link_to "Delete", comment_path(id: comment.id), method: :delete, class: "btn btn xm btn-danger" %>
-
+                <div class="single-comment">
+                  <span class="comment-author"><%= comment.user.email %></span><br />
+                  <%= comment.content %>
+                  <% if current_user == comment.user %>
+                  <%= link_to "Delete", comment_path(id: comment.id), method: :delete, class: "btn btn-xs btn-danger" %>
+                <% end %>
                 </div>
-                <% end %>
-                <% end %>
-            <% else %>
+              <% end %>
             <% end %>
-            <%= render "partials/comments_form", locals: { friend_post_id: friend_post.id } %>
           </div>
         </article>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
-  
 
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <div>
-      <h2>Create New Post</h2>
-    </div>
-    <%= form_for @user.posts.build do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %><br><br>
 
-      <%= f.label :content %>
-      <%= f.text_area :content, size: "30x5", class: "form-control"%><br><br>
-
-      <%= f.submit "Create Post", class: "btn btn-primary"%><br><br>
-    <% end %>
-  </div>
-</div>

@@ -7,6 +7,10 @@ article p {
   padding: 0 !important;
 }
 
+textarea {
+  resize: none;
+}
+
 .post__title {
   display: inline-block;
   margin-right: 0.5em;
@@ -22,4 +26,17 @@ article p {
 
 .view-comments {
   cursor: pointer;
+}
+
+.single-comment {
+  margin-left: 2em;
+  padding: 0.5em 0;
+}
+
+.comment-author {
+  font-weight: 700;
+}
+
+.comment-form-submit-btn {
+  margin-top: 1em;
 }

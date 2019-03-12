@@ -47,8 +47,18 @@ var newPostValidators = {
 };
 
 $(document).ready(function() {
+  // Don't show the comments section when the page is loaded.
   $(".comments").hide();
-  commentsInteraction();
+
+  // Show and hide the comments section whenever the user clicks
+  // the view-comments element.
+  $("article > .view-comments").each(function() {
+    $(this).click(function() {
+      $(this)
+        .next()
+        .slideToggle();
+    });
+  });
 
   $(".new_comment").each(function() {
     $(this).validate(commentValidators);
@@ -56,12 +66,3 @@ $(document).ready(function() {
 
   $(".new_post").validate(newPostValidators);
 });
-
-// Display the comments section
-var commentsInteraction = function() {
-  $(".view-comments").each(function() {
-    $(this).click(function() {
-      $($(this).next()).show();
-    });
-  });
-};

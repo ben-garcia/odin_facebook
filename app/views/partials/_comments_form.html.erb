@@ -1,7 +1,7 @@
 <%= form_for current_user.comments.build, html: { id: "comment_form" } do |f| %>
-  <%= f.text_area :content, size: "45x1", class: "form-control", placeholder: "Enter Comment", autofocus: true %><br>
+  <%= f.text_area :content, size: "45x1", class: "form-control", placeholder: "Enter Comment" %>
   <%= f.hidden_field :post_id, value: locals[:friend_post_id] %>
 
-  <%= f.submit "Post Comment", class: "btn btn-primary" %>
+  <%= f.submit "Post", class: "btn btn-primary btn-xs comment-form-submit-btn" %>
 
 <% end %>
