@@ -1,9 +1,16 @@
 <% if user_signed_in? %>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <span class="navbar-brand">OdinFacebook</span>
-      </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">OdinFacebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to "All Users", users_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %></li>
@@ -15,22 +22,32 @@
         </li>
         <li class="align-with-nav">Logged In as: <strong><%= current_user.email %></strong></li>
       </ul>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Settings", edit_user_registration_path, class: "glyphicon glyphicon-cog" %></li>
         <li><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-off" %></li>
       </ul>
     </div>
+  </div>
   </nav>
 <% else %>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <span class="navbar-brand">OdinFacebook</span>
-      </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">OdinFacebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "LogIn", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
         <li><%= link_to "SignUp", new_user_registration_path, class: "glyphicon glyphicon-plus" %></li>
       </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 <% end %>
