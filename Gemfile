@@ -31,9 +31,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
-gem "actionview", ">= 5.2.2.1"
+gem "actionview"
 
-gem "railties", ">= 5.2.2.1"
+gem "railties"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
