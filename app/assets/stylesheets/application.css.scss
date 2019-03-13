@@ -15,6 +15,4 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 // Add scss files individually rather than recursivly with require tree .
-@import "users.scss";
-@import "posts.scss";
-@import "footer.scss";
+@import "main.scss";

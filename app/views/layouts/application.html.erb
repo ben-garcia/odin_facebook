@@ -2,8 +2,10 @@
 <html>
   <head>
     <title>OdinFacebook</title>
-    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <%= csrf_meta_tags %>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,7 +20,9 @@
         <span class="alert alert-danger"><%= alert %></span>
       <% end %>
 
-      <%= yield %>
+      <main>
+        <%= yield %>
+      </main>
 
       <%= render "partials/footer" %>
     </div>
