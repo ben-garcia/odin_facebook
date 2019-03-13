@@ -242,7 +242,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionview (>= 5.1.6.2)
+  actionview (>= 5.2.2.1)
   bootstrap-sass (>= 3.4.1)
   byebug
   capybara
@@ -258,6 +258,7 @@ DEPENDENCIES
   puma
   rails
   rails_12factor
+  railties (>= 5.2.2.1)
   sass-rails
   selenium-webdriver
   spring
