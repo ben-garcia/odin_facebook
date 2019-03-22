@@ -30,8 +30,11 @@ App is [live](https://odinbookface.herokuapp.com/)
    and setup environment variables there
 
    ```
-    DB_USERNAME: < your_postgresql_username >
-    DB_PASSWORD: < your_postgresql_password >
+    FACEBOOK_APP_ID: < your_app_id >
+    FACEBOOK_APP_SECRET: < your_app_secret >
+
+    USERNAME: < your_postgresql_username >
+    PASSWORD: < your_postgresql_password >
    ```
 
    **OR**
