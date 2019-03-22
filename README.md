@@ -37,22 +37,6 @@ App is [live](https://odinbookface.herokuapp.com/)
     PASSWORD: < your_postgresql_password >
    ```
 
-   **OR**
-
-   open `config/database.yml` and type your postgreSQL credentials
-
-   ```
-   ...
-
-   development:
-     <<: *default
-     database: wheres_facebook_development
-     username: < your_postgresql_username >
-     password: < your_postgresql_password >
-
-   ...
-   ```
-
 3. run `bundle` to install gems
 
 4. run `rails db:create` to create database
