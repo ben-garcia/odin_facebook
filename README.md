@@ -1,10 +1,12 @@
-Project: Ruby on Rails Final Project!!!
+# Project: Ruby on Rails Final Project!!!
 
-[Project: Building Facebook](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
+Learn about project specifications [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 
-The purpose of the final project was to combine major concepts by building a miniature version of the popular social media site Facebook.
+App is [live](https://odinbookface.herokuapp.com/)
 
-# Features
+> The purpose of the final project was to combine major concepts by building a miniature version of the popular social media site Facebook.
+
+## Features
 
 - user authentication(using the devise gem)
 - users can sent friend requests and become friends(if the recipient user accepts of course)
@@ -13,4 +15,45 @@ The purpose of the final project was to combine major concepts by building a min
 
 - users can sign in using facebook using the omniauth-facebook gem
 
-Visit [Site](https://odinbookface.herokuapp.com/)
+## Instructions
+
+> Make sure you have [PostgreSQL](https://www.postgresql.org/) and a JavaScript runtime like [Node](https://nodejs.org/) installed.
+
+1. clone the repository
+
+   `git@github.com:ben-garcia/odin_facebook.git`
+
+2. create `config/application.yml`:
+
+   `bundle exec figaro install`
+
+   and setup environment variables there
+
+   ```
+    DB_USERNAME: < your_postgresql_username >
+    DB_PASSWORD: < your_postgresql_password >
+   ```
+
+   **OR**
+
+   open `config/database.yml` and type your postgreSQL credentials
+
+   ```
+   ...
+
+   development:
+     <<: *default
+     database: wheres_facebook_development
+     username: < your_postgresql_username >
+     password: < your_postgresql_password >
+
+   ...
+   ```
+
+3. run `bundle` to install gems
+
+4. run `rails db:create` to create database
+
+5. run `rails: db:migrate` to create tables
+
+7) run `rails s` to run server on `localhost:3000`
