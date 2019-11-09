@@ -23,17 +23,20 @@ gem 'sass-rails'
 gem 'uglifier'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
-
 gem "actionview"
-
 gem "railties"
+gem 'devise', '<= 4.7.1'
+gem "nokogiri", ">= 1.10.4"
+gem 'will_paginate'
+gem 'omniauth-facebook'
+gem 'figaro'
+gem "loofah", ">= 2.3.1"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -64,11 +67,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise', '<= 4.7.1'
-gem "nokogiri", ">= 1.10.4"
-gem 'will_paginate'
-gem 'omniauth-facebook'
-gem 'figaro'
 
 group :production do
   gem 'rails_12factor'
